@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f5940">
+  <meta name="description" content="A beautiful digital wedding invitation.">
+  <title>Our Wedding</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-mark" data-initials>R &amp; A</div>
+    <div class="preloader-line"></div>
+  </div>
+
+  <div id="opening" class="opening" role="dialog" aria-modal="true" aria-label="Wedding invitation">
+    <div class="opening-leaf opening-leaf-a"></div>
+    <div class="opening-leaf opening-leaf-b"></div>
+    <div class="opening-leaf opening-leaf-c"></div>
+    <div class="grain"></div>
+    <div class="opening-card">
+      <p class="eyebrow" data-opening-kicker>THE WEDDING OF</p>
+      <div class="opening-initials" data-initials>R &amp; A</div>
+      <div class="opening-names">
+        <span data-bride>Riya</span>
+        <i>&amp;</i>
+        <span data-groom>Arjun</span>
+      </div>
+      <div class="ornament"><span></span><b>❦</b><span></span></div>
+      <p class="opening-date" data-display-date>12 June 2027</p>
+      <button id="openInvitation" class="button button-light" type="button">
+        <span>Open Invitation</span><span class="button-arrow">→</span>
+      </button>
+      <p class="tap-note">Tap to begin our story</p>
+    </div>
+  </div>
+
+  <audio id="weddingMusic" preload="none"></audio>
+
+  <button id="musicToggle" class="music-toggle" type="button" aria-label="Play wedding music" aria-pressed="false" hidden>
+    <span class="music-disc">♫</span>
+    <span class="music-label">Music</span>
+  </button>
+
+  <main id="mainContent" class="site" hidden>
+    <section class="hero section-dark">
+      <div class="hero-pattern"></div>
+      <div class="hero-leaves leaf-1"></div>
+      <div class="hero-leaves leaf-2"></div>
+      <div class="hero-leaves leaf-3"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">TOGETHER WITH OUR FAMILIES</p>
+        <p class="hero-script">we invite you to celebrate</p>
+        <h1><span data-bride>Riya</span><small>&amp;</small><span data-groom>Arjun</span></h1>
+        <div class="gold-rule"><span></span><b>✦</b><span></span></div>
+        <p class="hero-date" data-display-date>12 June 2027</p>
+        <p class="hero-location" data-venue-name>Grand Wedding Hall</p>
+        <a class="scroll-cue" href="#invitation" aria-label="Scroll to invitation">↓</a>
+      </div>
+    </section>
+
+    <section id="invitation" class="paper-section intro section">
+      <div class="botanical botanical-left"></div>
+      <div class="botanical botanical-right"></div>
+      <div class="container narrow reveal">
+        <p class="eyebrow olive">WITH JOY IN OUR HEARTS</p>
+        <h2 data-invitation-heading>Together with our families</h2>
+        <div class="script-title">We are getting married</div>
+        <p class="body-copy" data-invitation-message>
+          We invite you to share in our happiness as we begin this beautiful new chapter together.
+        </p>
+        <div class="date-card">
+          <span data-day>Saturday</span>
+          <strong data-day-number>12</strong>
+          <span data-month-year>June · 2027</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="photo-feature section">
+      <div class="container photo-feature-grid">
+        <div class="feature-image-frame reveal">
+          <img id="mainPhoto" src="assets/images/couple-main.svg" alt="Wedding couple">
+          <div class="photo-seal"><span data-initials>R &amp; A</span></div>
+        </div>
+        <div class="feature-copy reveal">
+          <p class="eyebrow olive">OUR BEAUTIFUL BEGINNING</p>
+          <h2>Two hearts,<br><em>one story.</em></h2>
+          <p class="body-copy" data-story-intro>
+            From a simple hello to a lifetime of memories, every chapter has led us here.
+          </p>
+          <div class="signature" data-initials>R &amp; A</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story" class="story section-dark section">
+      <div class="section-flourish"></div>
+      <div class="container narrow">
+        <div class="section-heading reveal">
+          <p class="eyebrow">A LITTLE PIECE OF US</p>
+          <h2>Our Story</h2>
+          <p>Some moments are too beautiful not to remember.</p>
+        </div>
+        <div id="storyTimeline" class="timeline"></div>
+      </div>
+    </section>
+
+    <section id="events" class="events paper-section section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow olive">MARK YOUR CALENDAR</p>
+          <h2>The Celebration</h2>
+          <p>Come for the ceremony, stay for the memories.</p>
+        </div>
+        <div id="eventsGrid" class="events-grid"></div>
+      </div>
+    </section>
+
+    <section class="countdown-section section">
+      <div class="countdown-wash"></div>
+      <div class="container narrow reveal">
+        <p class="eyebrow olive">THE BIG DAY IS COMING</p>
+        <h2>Counting down to forever</h2>
+        <div id="countdown" class="countdown">
+          <div><strong data-unit="days">00</strong><span>Days</span></div>
+          <i>:</i>
+          <div><strong data-unit="hours">00</strong><span>Hours</span></div>
+          <i>:</i>
+          <div><strong data-unit="minutes">00</strong><span>Minutes</span></div>
+          <i>:</i>
+          <div><strong data-unit="seconds">00</strong><span>Seconds</span></div>
+        </div>
+        <p id="countdownMessage" class="countdown-message">Until we say “I do”</p>
+        <button id="calendarButton" class="button button-dark" type="button">Save the Date</button>
+      </div>
+    </section>
+
+    <section id="venue" class="venue section-dark section">
+      <div class="venue-arch"></div>
+      <div class="container venue-inner reveal">
+        <p class="eyebrow">WHERE TO FIND US</p>
+        <h2 data-venue-name>Grand Wedding Hall</h2>
+        <p class="venue-address" data-venue-address>MG Road, Thiruvananthapuram, Kerala</p>
+        <div class="venue-date-line">
+          <span data-display-date>12 June 2027</span>
+          <b>·</b>
+          <span data-time>6:30 PM</span>
+        </div>
+        <a id="mapButton" class="button button-light" href="#" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery-section section paper-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow olive">MOMENTS WE LOVE</p>
+          <h2>Our Gallery</h2>
+          <p>A few frames from our journey.</p>
+        </div>
+        <div id="galleryGrid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="rsvp section">
+      <div class="rsvp-leaves"></div>
+      <div class="container narrow reveal">
+        <div class="wax-initials" data-initials>R &amp; A</div>
+        <p class="eyebrow olive">YOUR PRESENCE IS OUR PRESENT</p>
+        <h2>Will you celebrate with us?</h2>
+        <p class="body-copy" data-rsvp-message>Please let us know if you can join us for our special day.</p>
+        <div class="rsvp-actions">
+          <a id="rsvpButton" class="button button-dark" href="#" target="_blank" rel="noopener">RSVP Now</a>
+          <a id="whatsappButton" class="button button-outline" href="#" target="_blank" rel="noopener">WhatsApp RSVP</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="qrSection" class="qr-section section-dark section" hidden>
+      <div class="container narrow reveal">
+        <p class="eyebrow">SHARE THE MOMENT</p>
+        <h2>Scan to open our invitation</h2>
+        <div class="qr-frame"><img id="qrImage" src="" alt="QR code"></div>
+      </div>
+    </section>
+
+    <section class="family section paper-section">
+      <div class="container narrow reveal">
+        <p class="eyebrow olive">WITH THE BLESSINGS OF OUR FAMILIES</p>
+        <div class="family-grid">
+          <div><h3>Her Family</h3><p id="brideParents"></p></div>
+          <div><h3>His Family</h3><p id="groomParents"></p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer section-dark">
+      <div class="footer-botanical"></div>
+      <div class="container narrow reveal">
+        <div class="footer-initials" data-initials>R &amp; A</div>
+        <p class="eyebrow">WE CAN'T WAIT TO CELEBRATE WITH YOU</p>
+        <h2><span data-bride>Riya</span> &amp; <span data-groom>Arjun</span></h2>
+        <p data-display-date>12 June 2027</p>
+        <div class="footer-rule"></div>
+        <small>Made with love · <span data-initials>R &amp; A</span></small>
+      </div>
+    </footer>
+  </main>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Close image">×</button>
+    <button id="lightboxPrev" class="lightbox-nav prev" type="button" aria-label="Previous image">‹</button>
+    <img id="lightboxImage" src="" alt="">
+    <button id="lightboxNext" class="lightbox-nav next" type="button" aria-label="Next image">›</button>
+  </div>
+
+  <script src="data/wedding-data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
