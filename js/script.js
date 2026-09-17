@@ -143,23 +143,87 @@
     });
   }
 
-  function setupOpening() {
-    const opening = $("#opening");
-    const main = $("#mainContent");
-    const button = $("#openInvitation");
-    button.addEventListener("click", () => {
+function setupOpening() {
+  const opening = $("#opening");
+  const main = $("#mainContent");
+  const button = $("#openInvitation");
+  const seal = $("#waxSeal");
+
+  if (!opening || !main) return;
+
+  let openingStarted = false;
+
+  function openInvitation() {
+    if (openingStarted) return;
+    openingStarted = true;
+
+    // Prevent another click while animation is running
+    if (button) button.disabled = true;
+    if (seal) seal.disabled = true;
+
+    // Start envelope animation
+    opening.classList.add("opening-active");
+
+    // Keep page locked while envelope opens
+    document.body.classList.add("no-scroll");
+
+    /*
+     * Timeline:
+     * 0.0s  - wax seal starts breaking/fading
+     * 0.2s  - envelope flap begins opening
+     * 0.6s  - invitation card rises
+     * 1.7s  - opening screen disappears
+     */
+    setTimeout(() => {
       opening.classList.add("closing");
+    }, 950);
+
+    setTimeout(() => {
+      opening.hidden = true;
+
+      main.hidden = false;
+
+      document.body.classList.remove("no-scroll");
       document.body.classList.add("invitation-open");
-      setTimeout(() => {
-        opening.hidden = true;
-        main.hidden = false;
-        $("#musicToggle").hidden = !data.music?.enabled;
-        document.body.style.overflow = "";
-        window.scrollTo({ top: 0, behavior: "instant" });
-        if (data.music?.enabled) tryPlayMusic();
-      }, 900);
-    });
+
+      // Music control
+      $("#musicToggle").hidden = !data.music?.enabled;
+
+      // Always return to the top of the wedding page
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+      // Try autoplay after user interaction
+      if (data.music?.enabled) {
+        tryPlayMusic();
+      }
+
+    }, 1750);
   }
+
+  // Wax seal click
+  if (seal) {
+    seal.addEventListener("click", openInvitation);
+  }
+
+  // Existing "Open Invitation" button
+  if (button) {
+    button.addEventListener("click", openInvitation);
+  }
+
+  // Also allow pressing Enter/Space when the opening dialog has focus
+  opening.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+      openInvitation();
+    }
+  });
+}
 
   function setupMusic() {
     const audio = $("#weddingMusic");
